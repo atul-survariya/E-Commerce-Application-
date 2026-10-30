@@ -12,19 +12,11 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    public Product save(Product product);
-
-    public Optional<Product> findById(Long id);
-
-    public List<Product> findAll();
-
-    public Product deleteProductById(Long id);
-
     @Query(value = "select title from product where id = :id", nativeQuery = true)
-    public List<String> getProductData1(@Param("id") Long id);
+    List<String> getProductData1(@Param("id") Long id);
 
-    public Page<Product> findByTitleContaining(String title, Pageable pageable);
+    Page<Product> findByTitleContaining(String title, Pageable pageable);
 
-    @Query(value = "select * from product where id= :id", nativeQuery = true)
-    public Optional<Product> getProduct (Long id);
+    @Query(value = "select * from product where id = :id", nativeQuery = true)
+    Optional<Product> getProduct(@Param("id") Long id);
 }
