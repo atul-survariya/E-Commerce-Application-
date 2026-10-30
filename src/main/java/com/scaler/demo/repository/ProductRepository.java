@@ -18,8 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     public List<Product> findAll();
 
-    public Product deleteProductById(Long id);
-
     @Query(value = "select title from product where id = :id", nativeQuery = true)
     public List<String> getProductData1(@Param("id") Long id);
 
